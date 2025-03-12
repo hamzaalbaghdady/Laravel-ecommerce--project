@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# Retrieve the name of the current branch
+current_branch=$(git rev-parse --abbrev-ref HEAD)
+
+# Set the protected branch
+protected_branch="main"
+
+if [ "$current_branch" = "$protected_branch" ]; then
+    echo "Error: You cannot commit directly to the branch '$protected_branch'."
+    echo "Please create a branch and make your commits there."
+    exit 1
+fi
