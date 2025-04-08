@@ -41,10 +41,10 @@ services:
     ports:
       - "3306:3306"
     environment:
-      MYSQL_DATABASE: laravel
-      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
-      MYSQL_USER: ${DB_USER}
-      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_DATABASE: e_commerce_project
+      MYSQL_USER: laravel
+      MYSQL_PASSWORD: secret
+      MYSQL_ROOT_PASSWORD: secret
     volumes:
       - mysql_data:/var/lib/mysql
     networks:
@@ -62,7 +62,7 @@ services:
       - "8080:80"
     environment:
       PMA_HOST: db
-      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+      MYSQL_ROOT_PASSWORD: secret
     networks:
       - laravel_network
     depends_on:
