@@ -1,5 +1,6 @@
 FROM php:8.3-fpm-alpine
 
+# Install system dependencies and PHP extensions
 RUN apk add --no-cache \
     bash \
     curl \
@@ -20,8 +21,19 @@ RUN apk add --no-cache \
     gd \
     intl
 
+# Set working directory
+WORKDIR /var/www
+
+# Copy project files into container
+COPY . .
+
+# Set correct permissions (after files are copied)
+RUN mkdir -p storage/app public storage/framework storage/logs bootstrap/cache \
+    && chown -R www-data:www-data storage bootstrap/cache \
+    && chmod -R 775 storage bootstrap/cache
+
 # Install Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-WORKDIR /var/www
+# Start PHP-FPM
 CMD ["php-fpm"]
