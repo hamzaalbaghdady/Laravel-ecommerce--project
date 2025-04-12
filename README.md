@@ -49,47 +49,7 @@ phone: string, true, Min: 7, Max: 20, Unique
 password: string, true, Min: 8, Max: 32
 password_confirmation: string, true, Must match password
 country: string, true, Required
-** Example**
-`{
-  "first_name": "Jane",
-  "last_name": "Doe",
-  "email": "jane@example.com",
-  "phone": "1234567890",
-  "password": "secret123",
-  "password_confirmation": "secret123",
-  "country": "Germany"
-}`
-Response 201 Created
-
-`json
-{
-  "message": "User account created successfully.",
-  "data": {
-    "id": 1,
-    "first_name": "Jane",
-    "last_name": "Doe",
-    "email": "jane@example.com",
-    ...
-  }
-}
-`
-
-#### Register
-
-Endpoint: POST /api/register
-Auth Required: No
-Description: Creates a new user account with default role customer.
-
-**Request Body**
-**Field: Type, Required, Validation**
-first_name: string, true, Required
-last_name: string, true, Required
-email: string, true, Must be a valid, unique email
-phone: string, true, Min: 7, Max: 20, Unique
-password: string, true, Min: 8, Max: 32
-password_confirmation: string, true, Must match password
-country: string, true, Required
-** Example**
+**Example**
 `{
   "first_name": "Jane",
   "last_name": "Doe",
